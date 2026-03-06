@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { MoveRight, Plus } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 const PRODUCTS = [
@@ -13,6 +14,7 @@ const PRODUCTS = [
         badge: "Bestseller",
         color: "bg-mint",
         badgeColor: "bg-mint-dark",
+        image: "/yumzy_lemon.png",
         shape1: "bg-mint-dark/50",
         shape2: "bg-mint-dark/80",
         shadow: "hover:shadow-mint/20 hover:border-mint-dark/50",
@@ -25,6 +27,7 @@ const PRODUCTS = [
         badge: "New",
         color: "bg-peach",
         badgeColor: "bg-peach-dark",
+        image: "/yumzy_peach.png",
         shape1: "bg-peach-dark/30",
         shape2: "bg-peach-dark/90",
         shadow: "hover:shadow-peach/40 hover:border-peach-dark/50",
@@ -37,6 +40,7 @@ const PRODUCTS = [
         badge: "Limited",
         color: "bg-purple-dark/20",
         badgeColor: "bg-purple",
+        image: "/yumzy_lavender.png",
         shape1: "bg-purple/30",
         shape2: "bg-purple/80",
         shadow: "hover:shadow-purple/20 hover:border-purple/50",
@@ -49,6 +53,7 @@ const PRODUCTS = [
         badge: "Seasonal",
         color: "bg-yellow",
         badgeColor: "bg-[#D4A84B]",
+        image: "/yumzy_sage.png",
         shape1: "bg-[#D4A84B]/20",
         shape2: "bg-[#D4A84B]/95",
         shadow: "hover:shadow-yellow/40 hover:border-yellow-dark/50",
@@ -93,6 +98,14 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
                 <div
                     className={`absolute left-[15%] top-[20%] h-[90px] w-[90px] rounded-[40%_60%_55%_45%] opacity-80 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-95 ${product.shape2}`}
                 />
+                <div className="relative z-10 w-4/5 h-4/5 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                    <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain drop-shadow-2xl"
+                    />
+                </div>
                 <span
                     className={`absolute left-3.5 top-3.5 rounded-full px-3 py-1 font-sans text-[0.62rem] font-bold uppercase tracking-[0.1em] text-white ${product.badgeColor}`}
                 >
