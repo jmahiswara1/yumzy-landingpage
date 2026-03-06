@@ -98,16 +98,16 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
                 <div
                     className={`absolute left-[15%] top-[20%] h-[90px] w-[90px] rounded-[40%_60%_55%_45%] opacity-80 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-95 ${product.shape2}`}
                 />
-                <div className="relative z-10 w-4/5 h-4/5 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                <div className="relative z-10 w-full h-full transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-contain drop-shadow-2xl"
+                        className="object-cover drop-shadow-2xl"
                     />
                 </div>
                 <span
-                    className={`absolute left-3.5 top-3.5 rounded-full px-3 py-1 font-sans text-[0.62rem] font-bold uppercase tracking-[0.1em] text-white ${product.badgeColor}`}
+                    className={`absolute left-3.5 top-3.5 z-20 rounded-full px-3 py-1 font-sans text-[0.62rem] font-bold uppercase tracking-[0.1em] text-white ${product.badgeColor}`}
                 >
                     {product.badge}
                 </span>
