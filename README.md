@@ -8,5 +8,6 @@ Landing page interaktif dan modern untuk **Yumzy**, sebuah produk camilan premiu
 
 - **Framework:** [Next.js](https://nextjs.org/) (App Router)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Bahasa:** TypeScript
-- **Animasi & UI:** Modern micro-animations & custom reusable components
+- **Language:** TypeScript
+- **3D Graphics:** React Three Fiber
+- **Animation:** Framer Motion
