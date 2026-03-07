@@ -1,9 +1,28 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
 import { MoveRight, Plus } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        },
+    },
+};
+
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6 },
+    },
+};
 
 const PRODUCTS = [
     {
@@ -60,45 +79,22 @@ const PRODUCTS = [
     },
 ];
 
-function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: number }) {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const rotateX = useTransform(y, [-100, 100], [10, -10]);
-    const rotateY = useTransform(x, [-100, 100], [-10, 10]);
-
-    function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-        const rect = e.currentTarget.getBoundingClientRect();
-        x.set(e.clientX - rect.left - rect.width / 2);
-        y.set(e.clientY - rect.top - rect.height / 2);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
+function ProductCard({ product }: { product: typeof PRODUCTS[0] }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: index * 0.1, ease: "easeOut" }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className={`group relative rounded-[28px] bg-white p-7 cursor-none transition-all duration-300 shadow-[0_2px_16px_rgba(26,26,46,0.05)] border border-dark/5 hover:-translate-y-1.5 hover:shadow-[0_16px_48px_rgba(26,26,46,0.1)] ${product.shadow}`}
+            variants={itemVariants}
+            className={`group relative rounded-[28px] bg-white p-7 cursor-pointer shadow-[0_2px_16px_rgba(26,26,46,0.05)] border border-dark/5 hover:shadow-[0_16px_48px_rgba(26,26,46,0.1)] ${product.shadow}`}
         >
             <div
-                className={`relative mb-5.5 flex aspect-square w-full items-center justify-center overflow-hidden rounded-[20px] transition-transform duration-350 group-hover:scale-[1.02] ${product.color}`}
+                className={`relative mb-5.5 flex aspect-square w-full items-center justify-center overflow-hidden rounded-[20px] ${product.color}`}
             >
                 <div
-                    className={`absolute h-[140px] w-[140px] rounded-full transition-transform duration-400 group-hover:rotate-12 group-hover:scale-110 ${product.shape1}`}
+                    className={`absolute h-[140px] w-[140px] rounded-full ${product.shape1}`}
                 />
                 <div
-                    className={`absolute left-[15%] top-[20%] h-[90px] w-[90px] rounded-[40%_60%_55%_45%] opacity-80 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-95 ${product.shape2}`}
+                    className={`absolute left-[15%] top-[20%] h-[90px] w-[90px] rounded-[40%_60%_55%_45%] opacity-80 ${product.shape2}`}
                 />
-                <div className="relative z-10 w-full h-full transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                <div className="relative z-10 w-full h-full">
                     <Image
                         src={product.image}
                         alt={product.name}
@@ -123,7 +119,7 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
                     {product.price}
                 </span>
                 <button
-                    className={`flex h-9.5 w-9.5 items-center justify-center rounded-full border-none cursor-none text-[1.1rem] font-light text-dark transition-all duration-250 hover:scale-110 ${product.color}`}
+                    className={`flex h-9.5 w-9.5 items-center justify-center rounded-full border-none cursor-pointer text-[1.1rem] font-light text-dark hover:opacity-80 ${product.color}`}
                 >
                     <Plus className="h-4 w-4" />
                 </button>
@@ -137,46 +133,43 @@ export function Products() {
         <section id="flavors" className="relative px-5 py-24 md:px-8 md:py-32 lg:px-16 lg:py-32">
             <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-dark/10 to-transparent" />
 
-            <div className="mb-16 flex items-end justify-between">
-                <div>
-                    <motion.p
-                        initial={{ opacity: 0, y: 36 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.75, ease: "easeOut" }}
-                        className="mb-3 flex items-center gap-2.5 font-sans text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[#C4B89A]"
-                    >
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="mb-16 flex items-end justify-between"
+            >
+                <motion.div variants={itemVariants}>
+                    <p className="mb-3 flex items-center gap-2.5 font-sans text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[#C4B89A]">
                         <span className="h-[1.5px] w-5 bg-[#C4B89A]" />
                         Our Flavors
-                    </motion.p>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 36 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
-                        className="font-serif text-[clamp(2.4rem,4vw,3.8rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-dark"
-                    >
+                    </p>
+                    <h2 className="font-serif text-[clamp(2.4rem,4vw,3.8rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-dark">
                         Find your <em className="text-pink italic">favourite</em>
-                    </motion.h2>
-                </div>
+                    </h2>
+                </motion.div>
                 <motion.a
+                    variants={itemVariants}
                     href="#"
-                    initial={{ opacity: 0, y: 36 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.75, ease: "easeOut", delay: 0.2 }}
-                    className="group flex items-center gap-2 font-sans text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-mid no-underline transition-colors cursor-none hover:text-dark"
+                    className="flex items-center gap-2 font-sans text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-mid no-underline cursor-pointer hover:text-dark"
                 >
                     View all flavors
-                    <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <MoveRight className="h-4 w-4" />
                 </motion.a>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
-                {PRODUCTS.map((prod, idx) => (
-                    <ProductCard key={prod.id} product={prod} index={idx} />
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-4"
+            >
+                {PRODUCTS.map((prod) => (
+                    <ProductCard key={prod.id} product={prod} />
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }

@@ -1,7 +1,26 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        },
+    },
+};
+
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6 },
+    },
+};
 
 const REVIEWS = [
     {
@@ -32,36 +51,34 @@ export function Testimonials() {
         <section id="reviews" className="relative overflow-hidden bg-purple/10 px-5 py-24 md:px-8 md:py-32 lg:px-16 lg:py-32">
             <div className="pointer-events-none absolute -bottom-[200px] -right-[150px] h-[500px] w-[500px] rounded-full bg-white/40" />
 
-            <motion.p
-                initial={{ opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.75, ease: "easeOut" }}
-                className="mb-3 flex items-center gap-2.5 font-sans text-[0.7rem] font-bold uppercase tracking-[0.16em] text-purple-dark"
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
             >
-                <span className="h-[1.5px] w-5 bg-purple-dark" />
-                Reviews
-            </motion.p>
+                <motion.p variants={itemVariants} className="mb-3 flex items-center gap-2.5 font-sans text-[0.7rem] font-bold uppercase tracking-[0.16em] text-purple-dark">
+                    <span className="h-[1.5px] w-5 bg-purple-dark" />
+                    Reviews
+                </motion.p>
 
-            <motion.h2
-                initial={{ opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
-                className="font-serif text-[clamp(2.4rem,4vw,3.8rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-dark"
+                <motion.h2 variants={itemVariants} className="font-serif text-[clamp(2.4rem,4vw,3.8rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-dark">
+                    What people are <em className="italic text-coral">saying</em>
+                </motion.h2>
+            </motion.div>
+
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3"
             >
-                What people are <em className="italic text-coral">saying</em>
-            </motion.h2>
-
-            <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
                 {REVIEWS.map((review, idx) => (
                     <motion.div
+                        variants={itemVariants}
                         key={idx}
-                        initial={{ opacity: 0, y: 36 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.75, delay: idx * 0.15, ease: "easeOut" }}
-                        className="group rounded-3xl bg-white p-9 shadow-[0_4px_24px_rgba(26,26,46,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_48px_rgba(26,26,46,0.1)]"
+                        className="group rounded-3xl bg-white p-9 shadow-[0_4px_24px_rgba(26,26,46,0.06)]"
                     >
                         <div className="mb-5 flex gap-1">
                             {[...Array(5)].map((_, i) => (
@@ -82,7 +99,7 @@ export function Testimonials() {
                         </div>
                     </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }
