@@ -22,7 +22,7 @@ export function Navbar() {
         const sections = ["flavors", "story", "reviews"];
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.target.id) {
                     setActiveTab(entry.target.id);
                 }
             });

@@ -2,13 +2,15 @@ import { Cursor } from "@/components/ui/Cursor";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Marquee } from "@/components/ui/Marquee";
-import { Products } from "@/components/sections/Products";
-import { Story } from "@/components/sections/Story";
-import { Perks } from "@/components/sections/Perks";
-import { Stats } from "@/components/sections/Stats";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { CTA } from "@/components/sections/CTA";
+import dynamic from "next/dynamic";
+
+const Marquee = dynamic(() => import("@/components/ui/Marquee").then((mod) => mod.Marquee));
+const Products = dynamic(() => import("@/components/sections/Products").then((mod) => mod.Products));
+const Story = dynamic(() => import("@/components/sections/Story").then((mod) => mod.Story));
+const Perks = dynamic(() => import("@/components/sections/Perks").then((mod) => mod.Perks));
+const Stats = dynamic(() => import("@/components/sections/Stats").then((mod) => mod.Stats));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials").then((mod) => mod.Testimonials));
+const CTA = dynamic(() => import("@/components/sections/CTA").then((mod) => mod.CTA));
 
 export default function Home() {
   const marqueeItems = [
