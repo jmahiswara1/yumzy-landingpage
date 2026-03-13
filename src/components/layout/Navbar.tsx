@@ -82,7 +82,7 @@ export function Navbar() {
                     </li>
                 ))}
             </ul>
-            <button className="bg-coral-dark text-white font-sans text-[0.65rem] md:text-xs font-bold tracking-widest uppercase border-none px-5 py-2.5 md:px-6 md:py-3 rounded-full cursor-none md:cursor-none transition-all duration-300 shadow-[0_4px_16px_rgba(255,107,107,0.35)] hover:bg-dark hover:shadow-[0_6px_20px_rgba(26,26,46,0.2)] hover:-translate-y-px active:scale-95">
+            <button className="bg-coral-dark text-white font-sans text-[0.65rem] md:text-xs font-bold tracking-widest uppercase border-none px-5 py-2.5 md:px-6 md:py-3 rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(255,107,107,0.35)] hover:bg-dark hover:shadow-[0_6px_20px_rgba(26,26,46,0.2)] hover:-translate-y-px active:scale-95">
                 Order Now
             </button>
         </nav>

@@ -45,11 +45,7 @@
     overflow-x: hidden;
   }
 
-  @media (pointer: fine) {
-    body {
-      cursor: none;
-    }
-  }
+
 
   /* NOISE OVERLAY */
   body::after {

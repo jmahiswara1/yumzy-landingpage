@@ -72,10 +72,10 @@ export function Hero() {
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
                     className="flex flex-col sm:flex-row sm:items-center gap-4.5"
                 >
-                    <button className="rounded-full bg-dark px-7 py-3.5 md:px-8.5 md:py-4 font-sans text-[0.75rem] md:text-[0.82rem] font-bold uppercase tracking-[0.08em] text-bg shadow-[0_6px_24px_rgba(26,26,46,0.18)] transition-all duration-250 cursor-none md:cursor-none hover:-translate-y-0.5 hover:bg-coral-dark hover:shadow-[0_8px_28px_rgba(204,84,84,0.4)]">
+                    <button className="rounded-full bg-dark px-7 py-3.5 md:px-8.5 md:py-4 font-sans text-[0.75rem] md:text-[0.82rem] font-bold uppercase tracking-[0.08em] text-bg shadow-[0_6px_24px_rgba(26,26,46,0.18)] transition-all duration-250 hover:-translate-y-0.5 hover:bg-coral-dark hover:shadow-[0_8px_28px_rgba(204,84,84,0.4)]">
                         Explore Flavors
                     </button>
-                    <button className="group flex items-center justify-center gap-2 rounded-full border-none bg-transparent font-sans text-[0.75rem] md:text-[0.82rem] font-semibold tracking-[0.04em] text-mid transition-colors cursor-none md:cursor-none hover:text-dark">
+                    <button className="group flex items-center justify-center gap-2 rounded-full border-none bg-transparent font-sans text-[0.75rem] md:text-[0.82rem] font-semibold tracking-[0.04em] text-mid transition-colors hover:text-dark">
                         Read our story
                         <MoveRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                     </button>

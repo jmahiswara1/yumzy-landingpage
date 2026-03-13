@@ -47,10 +47,10 @@ export function CTA() {
                 transition={{ duration: 0.75, ease: "easeOut", delay: 0.3 }}
                 className="flex flex-wrap justify-center gap-4 relative z-10"
             >
-                <button className="rounded-full bg-dark px-8.5 py-4 font-sans text-[0.82rem] font-bold uppercase tracking-[0.08em] text-bg shadow-[0_6px_24px_rgba(26,26,46,0.18)] transition-all duration-250 cursor-none hover:-translate-y-0.5 hover:bg-peach-dark hover:shadow-[0_8px_28px_rgba(244,160,122,0.4)]">
+                <button className="rounded-full bg-dark px-8.5 py-4 font-sans text-[0.82rem] font-bold uppercase tracking-[0.08em] text-bg shadow-[0_6px_24px_rgba(26,26,46,0.18)] transition-all duration-250 hover:-translate-y-0.5 hover:bg-peach-dark hover:shadow-[0_8px_28px_rgba(244,160,122,0.4)]">
                     Shop All Flavors
                 </button>
-                <button className="group flex items-center gap-2 rounded-full border-none bg-transparent px-4 font-sans text-[0.82rem] font-semibold tracking-[0.04em] text-mid transition-colors cursor-none hover:text-dark">
+                <button className="group flex items-center gap-2 rounded-full border-none bg-transparent px-4 font-sans text-[0.82rem] font-semibold tracking-[0.04em] text-mid transition-colors hover:text-dark">
                     Find a store near you
                     <MoveRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </button>

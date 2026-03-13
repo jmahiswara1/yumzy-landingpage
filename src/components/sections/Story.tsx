@@ -92,7 +92,7 @@ export function Story() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-                    className="w-fit rounded-full bg-dark px-8.5 py-4 font-sans text-[0.82rem] font-bold uppercase tracking-[0.08em] text-bg shadow-[0_6px_24px_rgba(26,26,46,0.18)] transition-all duration-250 cursor-none hover:-translate-y-0.5 hover:bg-peach-dark hover:shadow-[0_8px_28px_rgba(244,160,122,0.4)]"
+                    className="w-fit rounded-full bg-dark px-8.5 py-4 font-sans text-[0.82rem] font-bold uppercase tracking-[0.08em] text-bg shadow-[0_6px_24px_rgba(26,26,46,0.18)] transition-all duration-250 hover:-translate-y-0.5 hover:bg-peach-dark hover:shadow-[0_8px_28px_rgba(244,160,122,0.4)]"
                 >
                     Read our full story
                 </motion.button>
